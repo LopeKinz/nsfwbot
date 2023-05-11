@@ -21,28 +21,28 @@ async def on_ready():
 
 @client.command(pass_context=True)
 async def nudes(ctx, arg=None):
-    if arg == None:
+    if arg is None:
         memes_submissions = reddit.subreddit('porn').new()
         post_to_pick = random.randint(1, 100)
-        for i in range(0, post_to_pick):
+        for _ in range(0, post_to_pick):
             submission = next(x for x in memes_submissions if not x.stickied)
         await ctx.send(submission.url)
     elif arg == "ass":
         memes_submissions = reddit.subreddit('ass').new()
         post_to_pick = random.randint(1, 100)
-        for i in range(0, post_to_pick):
+        for _ in range(0, post_to_pick):
             submission = next(x for x in memes_submissions if not x.stickied)
         await ctx.send(submission.url)
     elif arg == "tits":
         memes_submissions = reddit.subreddit('tits').new()
         post_to_pick = random.randint(1, 100)
-        for i in range(0, post_to_pick):
+        for _ in range(0, post_to_pick):
             submission = next(x for x in memes_submissions if not x.stickied)
         await ctx.send(submission.url)
     elif arg == "gif":
         memes_submissions = reddit.subreddit('sexgifs').new()
         post_to_pick = random.randint(1, 100)
-        for i in range(0, post_to_pick):
+        for _ in range(0, post_to_pick):
             submission = next(x for x in memes_submissions if not x.stickied)
         await ctx.send(submission.url)
     elif arg == "help":
@@ -53,7 +53,7 @@ async def nudes(ctx, arg=None):
     elif arg == "video":
         memes_submissions = reddit.subreddit('nsfwvideos').new()
         post_to_pick = random.randint(1, 100)
-        for i in range(0, post_to_pick):
+        for _ in range(0, post_to_pick):
             submission = next(x for x in memes_submissions if not x.stickied)
         await ctx.send(submission.url)
 
@@ -65,13 +65,13 @@ async def nudes(ctx, arg=None):
 @has_permissions(administrator=True)
 async def msg(ctx, *, args = None):
     await client.wait_until_ready()
-    if args == None:
+    if args is None:
         message_content = "Please wait, we will be with you shortly!"
 
     else:
         message_content = "".join(args)
 
-        em = discord.Embed(title="PornBOT", description="{}".format(message_content))
+        em = discord.Embed(title="PornBOT", description=f"{message_content}")
         await ctx.send(embed=em)
         await ctx.message.delete()
 
